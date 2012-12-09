@@ -5,44 +5,44 @@
 #include <vector>
 using namespace std;
 
-#pragma pack(push, 2)//зададим выравнивание по наименьшему из типов
+#pragma pack(push, 2)//Р·Р°РґР°РґРёРј РІС‹СЂР°РІРЅРёРІР°РЅРёРµ РїРѕ РЅР°РёРјРµРЅСЊС€РµРјСѓ РёР· С‚РёРїРѕРІ
 
-struct BMP {//создадим общую стуктуру картинки
-	char B,M;//тип
-	unsigned long int bfSize;//размер всего файла в байтах
-	unsigned short int notUsed1;//не используемые
+struct BMP {//СЃРѕР·РґР°РґРёРј РѕР±С‰СѓСЋ СЃС‚СѓРєС‚СѓСЂСѓ РєР°СЂС‚РёРЅРєРё
+	char B,M;//С‚РёРї
+	unsigned long int bfSize;//СЂР°Р·РјРµСЂ РІСЃРµРіРѕ С„Р°Р№Р»Р° РІ Р±Р°Р№С‚Р°С…
+	unsigned short int notUsed1;//РЅРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ
 	unsigned short int notUsed2;//-//-
-	unsigned long int bfOffBits;//адрес растрового массива
-	unsigned long int biSize;//размер данной структуры в байтах
-	unsigned long int biWidth;//ширина
-	unsigned long int biHeight;//высота
-	unsigned short int biPlanes;//плоскости
-	unsigned short int biBitCount;//пиксель
-	unsigned long int biCompression;//сжатие
-	unsigned long int biSizeImage;//размер изображения в байтах
-	unsigned long int biXPelsPerMeter;//Горизонтальное разрешение в пикселях на метр для целевого устройства.
-	unsigned long int biYPelsPerMeter;//Вертикальное разрешение в пикселях на метр для целевого устройства.
-	unsigned long int biClrUsed;//Количество используемых цветовых индексов в палитре.
-	unsigned long int biClrImportant;};//Количество элементов палитры, необходимых для отображения изображения.
+	unsigned long int bfOffBits;//Р°РґСЂРµСЃ СЂР°СЃС‚СЂРѕРІРѕРіРѕ РјР°СЃСЃРёРІР°
+	unsigned long int biSize;//СЂР°Р·РјРµСЂ РґР°РЅРЅРѕР№ СЃС‚СЂСѓРєС‚СѓСЂС‹ РІ Р±Р°Р№С‚Р°С…
+	unsigned long int biWidth;//С€РёСЂРёРЅР°
+	unsigned long int biHeight;//РІС‹СЃРѕС‚Р°
+	unsigned short int biPlanes;//РїР»РѕСЃРєРѕСЃС‚Рё
+	unsigned short int biBitCount;//РїРёРєСЃРµР»СЊ
+	unsigned long int biCompression;//СЃР¶Р°С‚РёРµ
+	unsigned long int biSizeImage;//СЂР°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РІ Р±Р°Р№С‚Р°С…
+	unsigned long int biXPelsPerMeter;//Р“РѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРµ СЂР°Р·СЂРµС€РµРЅРёРµ РІ РїРёРєСЃРµР»СЏС… РЅР° РјРµС‚СЂ РґР»СЏ С†РµР»РµРІРѕРіРѕ СѓСЃС‚СЂРѕР№СЃС‚РІР°.
+	unsigned long int biYPelsPerMeter;//Р’РµСЂС‚РёРєР°Р»СЊРЅРѕРµ СЂР°Р·СЂРµС€РµРЅРёРµ РІ РїРёРєСЃРµР»СЏС… РЅР° РјРµС‚СЂ РґР»СЏ С†РµР»РµРІРѕРіРѕ СѓСЃС‚СЂРѕР№СЃС‚РІР°.
+	unsigned long int biClrUsed;//РљРѕР»РёС‡РµСЃС‚РІРѕ РёСЃРїРѕР»СЊР·СѓРµРјС‹С… С†РІРµС‚РѕРІС‹С… РёРЅРґРµРєСЃРѕРІ РІ РїР°Р»РёС‚СЂРµ.
+	unsigned long int biClrImportant;};//РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РїР°Р»РёС‚СЂС‹, РЅРµРѕР±С…РѕРґРёРјС‹С… РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ.
 #pragma pack(pop)
 
 int main () {
 	BMP picture;
 	int sum;
-	//блок считывания файла от пользователя
+	//Р±Р»РѕРє СЃС‡РёС‚С‹РІР°РЅРёСЏ С„Р°Р№Р»Р° РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	char* file_name;
-	file_name = (char *) calloc(256, sizeof(char));//выделим память под имя
+	file_name = (char *) calloc(256, sizeof(char));//РІС‹РґРµР»РёРј РїР°РјСЏС‚СЊ РїРѕРґ РёРјСЏ
 	cin>>file_name;
 	FILE *stream = fopen(file_name, "r+");
-	free(file_name);//очистим память взятую под имя
+	free(file_name);//РѕС‡РёСЃС‚РёРј РїР°РјСЏС‚СЊ РІР·СЏС‚СѓСЋ РїРѕРґ РёРјСЏ
 	
-	//проверка типа файла
+	//РїСЂРѕРІРµСЂРєР° С‚РёРїР° С„Р°Р№Р»Р°
 	fread(&picture, sizeof(BMP), 1, stream);
 
-	long line = (picture.biWidth * 3) + (picture.biWidth % 4);//длина строки с учетов выравнивания
+	long line = (picture.biWidth * 3) + (picture.biWidth % 4);//РґР»РёРЅР° СЃС‚СЂРѕРєРё СЃ СѓС‡РµС‚РѕРІ РІС‹СЂР°РІРЅРёРІР°РЅРёСЏ
 
-	char * buffer = (char *) calloc((picture.biHeight * line), sizeof(char));//выделим память под буффер
-	//блок считывания растрового массива
+	char * buffer = (char *) calloc((picture.biHeight * line), sizeof(char));//РІС‹РґРµР»РёРј РїР°РјСЏС‚СЊ РїРѕРґ Р±СѓС„С„РµСЂ
+	//Р±Р»РѕРє СЃС‡РёС‚С‹РІР°РЅРёСЏ СЂР°СЃС‚СЂРѕРІРѕРіРѕ РјР°СЃСЃРёРІР°
 	fseek (stream, picture.bfOffBits, 0);
 	fread (buffer,(sizeof(char)), (line * picture.biHeight), stream);
 	fclose (stream);
@@ -54,7 +54,7 @@ int main () {
 	char * r = (char *) calloc(temp, sizeof(char));
 	for (int i=0; i<alltemp; i++){
 		if ((i <= bitemp) || ((i % line) <= bitemp)){
-		/*	char blue = buffer[i];
+			char blue = buffer[i];
 			i++;
 			char green = buffer[i];
 			i++;
@@ -62,16 +62,16 @@ int main () {
 			char sum = (green+blue+red)/3;
 			buffer[i] = sum; i--;
 			buffer[i] = sum; i--;
-			buffer[i] = sum; i++;i++;*/
-		if (i%3==0)
+			buffer[i] = sum; i++;i++;
+		/*if (i%3==0)
 		b[i/3] = buffer[i];
 		if (i%3==1)
 		g[i/3] = buffer[i];
 		if (i%3==2)
-		r[i/3] = buffer[i];
+		r[i/3] = buffer[i];*/
 		}
 	}
-	for (int i=0; i<temp; i++){
+	/*for (int i=0; i<temp; i++){
 	char bw=(b[i]+g[i]+r[i])/3;
 	b[i]=bw;
 	g[i]=bw;
@@ -85,7 +85,7 @@ int main () {
 		if (i%3==2)
 		buffer[i] = r[i/3];
 		}
-	}	free(b);
+	}*/	free(b);
 	free(r);
 	free(g);
 	FILE *outfile = fopen("D:\outfile.bmp", "w+");
@@ -94,10 +94,11 @@ int main () {
 	fwrite(buffer, sizeof(char) , (line * picture.biHeight), outfile);
 	fclose (outfile);
 
-	//очистим память взятую под буффер
-//	cout<<"Type: "<<picture.B<<picture.M<<endl<<"Width: "<<picture.biWidth<<endl<<"Height: "<<picture.biHeight<<endl<<bbyte<<sizeof(buffer)<<b;//вывод для проверки
+	//РѕС‡РёСЃС‚РёРј РїР°РјСЏС‚СЊ РІР·СЏС‚СѓСЋ РїРѕРґ Р±СѓС„С„РµСЂ
+//	cout<<"Type: "<<picture.B<<picture.M<<endl<<"Width: "<<picture.biWidth<<endl<<"Height: "<<picture.biHeight<<endl<<bbyte<<sizeof(buffer)<<b;//РІС‹РІРѕРґ РґР»СЏ РїСЂРѕРІРµСЂРєРё
 	free(buffer);
 
 }
+
 
 
